@@ -5,12 +5,15 @@ import {
   FaPhoneAlt,
   FaSms,
   FaCopy,
+  FaEnvelope,
 } from "react-icons/fa";
 import { SiZalo } from "react-icons/si";
 import toast, { Toaster } from "react-hot-toast";
+import ElectricBorder from "./ElectricBorder";
 
 export default function ProfileCard() {
   const phoneNumber = "0926999945";
+  const email = "phuvinhhuy1995@gmail.com";
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const timerRef = useRef(null);
@@ -55,10 +58,12 @@ export default function ProfileCard() {
     setShowMenu(false);
   };
 
+  const handleEmail = () => {
+    window.location.href = `mailto:${email}`;
+  };
+
   return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-red-700 via-rose-400 to-rose-100 p-4"
-    >
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-red-700 via-rose-400 to-rose-100 p-4">
       <Toaster />
 
       {/* Avatar */}
@@ -71,14 +76,38 @@ export default function ProfileCard() {
           />
         </div>
 
-        <h1 className="mt-4 text-2xl font-semibold text-white">
-          Phu Vinh Huy
-        </h1>
-        <p className="text-gray-500 text-sm">@HuyPV</p>
+        <h1 className="mt-4 text-2xl font-semibold text-white">Phu Vinh Huy</h1>
+
+        <ElectricBorder
+    color="#7df9ff"
+    speed={1}
+    chaos={0.6}
+    thickness={1.5}
+    style={{
+      borderRadius: 12,
+      display: "inline-block",
+      marginTop: "12px",
+      padding: "8px 20px",
+    }}
+  >
+    <p className="text-sm sm:text-base font-medium text-white/90">
+      Make it work, make it right, make it fast
+    </p>
+  </ElectricBorder>
+
       </div>
 
       {/* Links */}
-      <div className="mt-6 w-full max-w-xs space-y-3 relative">
+      <div className="mt-6 w-full max-w-xs space-y-4 relative">
+        {/* Email */}
+        <button
+          onClick={handleEmail}
+          className="flex items-center gap-3 justify-center w-full bg-white rounded-2xl shadow hover:bg-red-500 hover:text-white py-3 transition"
+        >
+          <FaEnvelope className="text-orange-500 text-xl" />
+          <span className="font-medium">phuvinhhuy1995@gmail.com</span>
+        </button>
+
         {/* Phone Button */}
         <div className="relative" ref={menuRef}>
           <button
